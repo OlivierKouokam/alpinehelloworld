@@ -7,7 +7,9 @@ pipeline {
       STAGING = "${APP_NAME}-staging"
       PRODUCTION = "${APP_NAME}-prod"
       DOCKERHUB_ID = "olivierkkoc"
-      DOCKERHUB_PASSWORD = credentials('dockerhub')
+      // DOCKERHUB_PASSWORD = credentials('dockerhub')
+      DOCKERHUB_PASSWORD_USR = "olivierkkoc"
+      DOCKERHUB_PASSWORD_PSW = "Godislove/*-"
       STG_API_ENDPOINT = "ip10-0-0-3-ckiok9ct654gqaevksdg-1993.direct.docker.labs.eazytraining.fr"
       STG_APP_ENDPOINT = "ip10-0-0-3-ckiok9ct654gqaevksdg-80.direct.docker.labs.eazytraining.fr"
       PROD_API_ENDPOINT = "ip10-0-0-4-ckiok9ct654gqaevksdg-1993.direct.docker.labs.eazytraining.fr"
