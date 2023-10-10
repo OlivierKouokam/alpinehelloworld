@@ -1,6 +1,7 @@
 pipeline {
   environment {
       IMAGE_NAME = "alpinehelloworld"
+      DOCKER0_INTERFACE = "172.17.0.1"
       APP_EXPOSED_PORT = "8090"
       APP_NAME = "jenkins-lab"
       IMAGE_TAG = "latest"
@@ -49,7 +50,7 @@ pipeline {
       steps {
         script {
           sh '''
-            curl -v http://172.17.0.1:$APP_EXPOSED_PORT | grep -q "Hello world!"            
+            curl -v http://$DOCKER0_INTERFACE:$APP_EXPOSED_PORT | grep -q "Hello world!"            
           '''
         }
       }
