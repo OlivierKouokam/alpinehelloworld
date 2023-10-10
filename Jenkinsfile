@@ -5,7 +5,7 @@ pipeline {
     STAGING = "eazytraining-staging"
     PRODUCTION = "eazytraining-production"
   }
-  
+
   agent none
 
   stages {
@@ -13,7 +13,7 @@ pipeline {
       agent any
       steps {
         script {
-          sh 'docker build -t olivierkkoc/$IMAGE_NAME:$IMAGE_TAG'
+          sh 'docker build -t olivierkkoc/$IMAGE_NAME:$IMAGE_TAG .'
         }
       }
     }
@@ -36,6 +36,18 @@ pipeline {
         script {
           sh '''
             curl http://localhost | grep -q "Hello world!"            
+          '''
+        }
+      }
+    }
+
+    stage('Clean Container') {
+      agent any
+      steps {
+        script {
+          sh '''
+            docker stop $IMAGE_NAME
+            docker rm $IMAGE_NAME
           '''
         }
       }
