@@ -1,9 +1,9 @@
 pipeline {
   environment {
-      IMAGE_NAME = alpinehelloworld
-      APP_EXPOSED_PORT = 8090
-      APP_NAME = jenkins-lab
-      IMAGE_TAG = latest
+      IMAGE_NAME = "alpinehelloworld"
+      APP_EXPOSED_PORT = "8090"
+      APP_NAME = "jenkins-lab"
+      IMAGE_TAG = "latest"
       STAGING = "${APP_NAME}-staging"
       PRODUCTION = "${APP_NAME}-prod"
       DOCKERHUB_ID = "olivierkkoc"
