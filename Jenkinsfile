@@ -7,11 +7,13 @@ pipeline {
       STAGING = "${APP_NAME}-staging"
       PRODUCTION = "${APP_NAME}-prod"
       DOCKERHUB_ID = "olivierkkoc"
-      DOCKERHUB_PASSWORD = credentials('dockerhub')
-      STG_API_ENDPOINT = "ip10-0-0-3-ckiok9ct654gqaevksdg-1993.direct.docker.labs.eazytraining.fr"
-      STG_APP_ENDPOINT = "ip10-0-0-3-ckiok9ct654gqaevksdg-80.direct.docker.labs.eazytraining.fr"
-      PROD_API_ENDPOINT = "ip10-0-0-4-ckiok9ct654gqaevksdg-1993.direct.docker.labs.eazytraining.fr"
-      PROD_APP_ENDPOINT = "ip10-0-0-4-ckiok9ct654gqaevksdg-80.direct.docker.labs.eazytraining.fr"
+      // DOCKERHUB_PASSWORD = credentials('dockerhub')
+      DOCKERHUB_PASSWORD_USR = "olivierkkoc"
+      DOCKERHUB_PASSWORD_PSW = "Godislove/*-"
+      STG_API_ENDPOINT = "ip10-0-1-3-ckis1ukt654gqaevkss0-1993.direct.docker.labs.eazytraining.fr"
+      STG_APP_ENDPOINT = "ip10-0-1-3-ckis1ukt654gqaevkss0-80.direct.docker.labs.eazytraining.fr"
+      PROD_API_ENDPOINT = "ip10-0-1-4-ckis1ukt654gqaevkss0-1993.direct.docker.labs.eazytraining.fr"
+      PROD_APP_ENDPOINT = "ip10-0-1-4-ckis1ukt654gqaevkss0-80.direct.docker.labs.eazytraining.fr"
       INTERNAL_PORT = "5000"
       EXTERNAL_PORT = "$APP_EXPOSED_PORT"
       CONTAINER_IMAGE = "${DOCKERHUB_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
@@ -79,7 +81,7 @@ pipeline {
         }
     }
 
-    stage('STAGING env - Deploy app ') {
+    stage('STAGING env - Deploy app') {
       when {
         expression { GIT_BRANCH == 'origin/eazylabs' }
       }
@@ -97,7 +99,7 @@ pipeline {
       }
     }
 
-    stage('Push image in production and deploy it ') {
+    stage('PRODUCTION env - Deploy app') {
       when {
         expression { GIT_BRANCH == 'origin/master' }
       }
