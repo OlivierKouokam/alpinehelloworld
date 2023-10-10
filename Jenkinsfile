@@ -1,5 +1,5 @@
 pipeline {
-  
+
   environment {
       IMAGE_NAME = "alpinehelloworld"
       DOCKER0_INTERFACE = "172.17.0.1"
@@ -81,7 +81,7 @@ pipeline {
         }
     }
 
-    stage('STAGING env - Deploy app ') {
+    stage('STAGING env - Deploy app') {
       when {
         expression { GIT_BRANCH == 'origin/eazylabs' }
       }
@@ -99,7 +99,7 @@ pipeline {
       }
     }
 
-    stage('Push image in production and deploy it ') {
+    stage('PRODUCTION env - Deploy app') {
       when {
         expression { GIT_BRANCH == 'origin/master' }
       }
