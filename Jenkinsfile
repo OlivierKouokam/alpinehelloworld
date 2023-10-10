@@ -1,4 +1,5 @@
 pipeline {
+  
   environment {
       IMAGE_NAME = "alpinehelloworld"
       DOCKER0_INTERFACE = "172.17.0.1"
