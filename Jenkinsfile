@@ -1,3 +1,6 @@
+/*import shared Library*/
+@Library('OlivierKouokam-shared-Library')
+
 pipeline {
   
   environment {
@@ -111,12 +114,17 @@ pipeline {
       }
     }
   }
-  post {
+  /* post {
     success {
       slackSend (color: '#00FF00', message: "SUCCESSFULL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
     }
     failure {
       slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+  } */
+  post {
+    always {
+      slackNotifier currentBuild.result
     }
   }
 }
