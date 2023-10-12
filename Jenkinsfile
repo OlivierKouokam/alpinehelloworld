@@ -124,7 +124,9 @@ pipeline {
   } */
   post {
     always {
-      slackNotifier currentBuild.result
+      script {
+        slackNotifier currentBuild.result
+      }
     }
   }
 }
