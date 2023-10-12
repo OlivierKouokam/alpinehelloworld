@@ -1,5 +1,5 @@
 /*import shared Library*/
-@Library('OlivierKouokam-shared-Library')
+@Library('OlivierKouokam-shared-Library');
 
 pipeline {
   
@@ -13,10 +13,10 @@ pipeline {
       PRODUCTION = "${APP_NAME}-prod"
       DOCKERHUB_ID = "olivierkkoc"
       DOCKERHUB_PASSWORD = credentials('dockerhub_olivier')
-      STG_API_ENDPOINT = "ip10-0-0-3-ckjt1m4t654gqaevkvpg-1993.direct.docker.labs.eazytraining.fr"
-      STG_APP_ENDPOINT = "ip10-0-0-3-ckjt1m4t654gqaevkvpg-80.direct.docker.labs.eazytraining.fr"
-      PROD_API_ENDPOINT = "ip10-0-0-4-ckjt1m4t654gqaevkvpg-1993.direct.docker.labs.eazytraining.fr"
-      PROD_APP_ENDPOINT = "ip10-0-0-4-ckjt1m4t654gqaevkvpg-80.direct.docker.labs.eazytraining.fr"
+      STG_API_ENDPOINT = "ip10-0-0-3-ckjv3bkt654gqaevl010-1993.direct.docker.labs.eazytraining.fr"
+      STG_APP_ENDPOINT = "ip10-0-0-3-ckjv3bkt654gqaevl010-80.direct.docker.labs.eazytraining.fr"
+      PROD_API_ENDPOINT = "ip10-0-0-4-ckjv3bkt654gqaevl010-1993.direct.docker.labs.eazytraining.fr"
+      PROD_APP_ENDPOINT = "ip10-0-0-4-ckjv3bkt654gqaevl010-80.direct.docker.labs.eazytraining.fr"
       INTERNAL_PORT = "5000"
       EXTERNAL_PORT = "$APP_EXPOSED_PORT"
       CONTAINER_IMAGE = "${DOCKERHUB_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
