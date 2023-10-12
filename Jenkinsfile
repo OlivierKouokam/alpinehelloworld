@@ -10,10 +10,10 @@ pipeline {
       PRODUCTION = "${APP_NAME}-prod"
       DOCKERHUB_ID = "olivierkkoc"
       DOCKERHUB_PASSWORD = credentials('dockerhub_olivier')
-      STG_API_ENDPOINT = "ip10-0-1-3-ckis1ukt654gqaevkss0-1993.direct.docker.labs.eazytraining.fr"
-      STG_APP_ENDPOINT = "ip10-0-1-3-ckis1ukt654gqaevkss0-80.direct.docker.labs.eazytraining.fr"
-      PROD_API_ENDPOINT = "ip10-0-1-4-ckis1ukt654gqaevkss0-1993.direct.docker.labs.eazytraining.fr"
-      PROD_APP_ENDPOINT = "ip10-0-1-4-ckis1ukt654gqaevkss0-80.direct.docker.labs.eazytraining.fr"
+      STG_API_ENDPOINT = "ip10-0-0-3-ckjt1m4t654gqaevkvpg-1993.direct.docker.labs.eazytraining.fr"
+      STG_APP_ENDPOINT = "ip10-0-0-3-ckjt1m4t654gqaevkvpg-80.direct.docker.labs.eazytraining.fr"
+      PROD_API_ENDPOINT = "ip10-0-0-4-ckjt1m4t654gqaevkvpg-1993.direct.docker.labs.eazytraining.fr"
+      PROD_APP_ENDPOINT = "ip10-0-0-4-ckjt1m4t654gqaevkvpg-80.direct.docker.labs.eazytraining.fr"
       INTERNAL_PORT = "5000"
       EXTERNAL_PORT = "$APP_EXPOSED_PORT"
       CONTAINER_IMAGE = "${DOCKERHUB_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
@@ -109,6 +109,14 @@ pipeline {
           """
         }
       }
+    }
+  }
+  post {
+    success {
+      slackSend (color: '#00FF00', message: "SUCCESSFULL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+    failure {
+      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
     }
   }
 }
