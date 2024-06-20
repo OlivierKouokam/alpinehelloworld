@@ -9,11 +9,15 @@ pipeline {
       STAGING = "${APP_NAME}-staging"
       PRODUCTION = "${APP_NAME}-prod"
       DOCKERHUB_ID = "olivierkkoc"
-      DOCKERHUB_PASSWORD = credentials('dockerhub_olivier')
-      STG_API_ENDPOINT = "ip10-0-1-3-ckis1ukt654gqaevkss0-1993.direct.docker.labs.eazytraining.fr"
-      STG_APP_ENDPOINT = "ip10-0-1-3-ckis1ukt654gqaevkss0-80.direct.docker.labs.eazytraining.fr"
-      PROD_API_ENDPOINT = "ip10-0-1-4-ckis1ukt654gqaevkss0-1993.direct.docker.labs.eazytraining.fr"
-      PROD_APP_ENDPOINT = "ip10-0-1-4-ckis1ukt654gqaevkss0-80.direct.docker.labs.eazytraining.fr"
+      DOCKERHUB_PASSWORD = credentials('dockerhub_credentials')
+      #STG_API_ENDPOINT = "ip10-0-1-3-ckis1ukt654gqaevkss0-1993.direct.docker.labs.eazytraining.fr"
+      STG_API_ENDPOINT = "http://ec2-18-206-253-63.compute-1.amazonaws.com:1993"
+      #STG_APP_ENDPOINT = "ip10-0-1-3-ckis1ukt654gqaevkss0-80.direct.docker.labs.eazytraining.fr"
+      STG_APP_ENDPOINT = "http://ec2-18-206-253-63.compute-1.amazonaws.com:80"
+    
+      #PROD_API_ENDPOINT = "ip10-0-1-4-ckis1ukt654gqaevkss0-1993.direct.docker.labs.eazytraining.fr"
+      #PROD_APP_ENDPOINT = "ip10-0-1-4-ckis1ukt654gqaevkss0-80.direct.docker.labs.eazytraining.fr"
+    
       INTERNAL_PORT = "5000"
       EXTERNAL_PORT = "$APP_EXPOSED_PORT"
       CONTAINER_IMAGE = "${DOCKERHUB_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
@@ -83,7 +87,7 @@ pipeline {
 
     stage('STAGING env - Deploy app') {
       when {
-        expression { GIT_BRANCH == 'origin/eazylabs' }
+        expression { GIT_BRANCH == 'origin/master' }
       }
       agent any
       environment {
@@ -98,7 +102,7 @@ pipeline {
         }
       }
     }
-
+    /*
     stage('PRODUCTION env - Deploy app') {
       when {
         expression { GIT_BRANCH == 'origin/master' }
@@ -113,5 +117,6 @@ pipeline {
         }
       }
     }
+    */
   }
 }
