@@ -15,11 +15,6 @@ phases:
       - docker run --name $IMAGE_REPO_NAME -d -p 80:5000 -e PORT=5000 $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - |
         curl http://172.17.0.1
-        docker info
-        cat /etc/docker/daemon.json
-        systemctl cat docker.service
-        docker ps -a
-        curl http://localhost
         if $(curl http://localhost | grep -q "Hello world!");
         then
           echo image seems to be working normally
