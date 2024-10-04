@@ -1,9 +1,9 @@
 pipeline {
     environment {
-        IMAGE_NAME = "${PARAM_IMAGE_NAME}"                    /*alpinehelloworld par exemple*/
-        APP_EXPOSED_PORT = "${PARAM_PORT_EXPOSED}"            /*80 par défaut*/
-        APP_NAME = "${PARAM_APP_NAME}"                        /*eazyapp par exemple*/
-        IMAGE_TAG = "${PARAM_IMAGE_TAG}"                      /*tag docker, par exemple latest*/
+        IMAGE_NAME = "${PARAM_IMAGE_NAME}"                    /* alpinehelloworld par exemple */
+        APP_EXPOSED_PORT = "${PARAM_PORT_EXPOSED}"            /* 80 par défaut */
+        APP_NAME = "${PARAM_APP_NAME}"                        /* eazyapp par exemple */
+        IMAGE_TAG = "${PARAM_IMAGE_TAG}"                      /* tag docker, par exemple latest */
         STAGING = "${PARAM_APP_NAME}-staging"
         PRODUCTION = "${PARAM_APP_NAME}-prod"
         DOCKERHUB_ID = "${PARAM_DOCKERHUB_ID}"
@@ -12,7 +12,7 @@ pipeline {
         STG_APP_ENDPOINT = "${PARAM_STG_APP_ENDPOINT}"        /* Mettre le couple IP:PORT votre application en staging, exemple 100.25.147.76:8000 */
         PROD_API_ENDPOINT = "${PARAM_PROD_API_ENDPOINT}"      /* Mettre le couple IP:PORT de votre API eazylabs, 100.25.147.76:1993 */
         PROD_APP_ENDPOINT = "${PARAM_PROD_APP_ENDPOINT}"      /* Mettre le couple IP:PORT votre application en production, exemple 100.25.147.76 */
-        INTERNAL_PORT = "${PARAM_INTERNAL_PORT}"              /*5000 par défaut*/
+        INTERNAL_PORT = "${PARAM_INTERNAL_PORT}"              /* 5000 par défaut */
         EXTERNAL_PORT = "${PARAM_PORT_EXPOSED}"
         CONTAINER_IMAGE = "${DOCKERHUB_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
     }
