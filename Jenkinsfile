@@ -81,6 +81,9 @@ pipeline {
       }
 
       stage('STAGING - Deploy app') {
+        when {
+          expression { GIT_BRANCH == 'origin/master' }
+        }
       agent any
       steps {
           script {
