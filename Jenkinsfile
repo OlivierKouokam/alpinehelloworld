@@ -7,7 +7,7 @@ pipeline {
         STAGING = "${PARAM_APP_NAME}-staging"
         PRODUCTION = "${PARAM_APP_NAME}-prod"
         DOCKERHUB_ID = "${PARAM_DOCKERHUB_ID}"
-        DOCKERHUB_PASSWORD = credentials('dockerhub')
+        DOCKERHUB_PASSWORD = credentials('dockerhub_creds')
         STG_API_ENDPOINT = "${PARAM_STG_API_ENDPOINT}"        /* Mettre le couple IP:PORT de votre API eazylabs, exemple 100.25.147.76:1993 */
         STG_APP_ENDPOINT = "${PARAM_STG_APP_ENDPOINT}"        /* Mettre le couple IP:PORT votre application en staging, exemple 100.25.147.76:8000 */
         PROD_API_ENDPOINT = "${PARAM_PROD_API_ENDPOINT}"      /* Mettre le couple IP:PORT de votre API eazylabs, 100.25.147.76:1993 */
@@ -20,8 +20,16 @@ pipeline {
     parameters {
         // booleanParam(name: "RELEASE", defaultValue: false)
         // choice(name: "DEPLOY_TO", choices: ["", "INT", "PRE", "PROD"])
+        string(name: 'PARAM_APP_NAME', defaultValue: 'ahw-eazyapp', description: 'App Name')
         string(name: 'PARAM_IMAGE_NAME', defaultValue: 'alpinehelloworld', description: 'Image Name')
-        string(name: 'PARAM_PORT_EXPOSED', defaultValue: '8050', description: 'APP EXPOSED PORT')        
+        string(name: 'PARAM_IMAGE_TAG', defaultValue: 'latest', description: 'Image Tag')
+        string(name: 'PARAM_PORT_EXPOSED', defaultValue: '8050', description: 'APP EXPOSED PORT')
+        string(name: 'PARAM_INTERNAL_PORT', defaultValue: '5000', description: 'APP INTERNAL PORT')
+        string(name: 'PARAM_DOCKERHUB_ID', defaultValue: 'olivierkkoc', description: 'dockerhub id')
+        string(name: 'PARAM_STG_API_ENDPOINT', defaultValue: 'https://ip10-0-71-5-ctcldhel795g008li5ig-1993.direct.docker.labs.eazytraining.fr/', description: 'STG EAZYLABS API')
+        string(name: 'PARAM_STG_APP_ENDPOINT', defaultValue: 'https://ip10-0-71-5-ctcldhel795g008li5ig-80.direct.docker.labs.eazytraining.fr/', description: 'STG EAZYLABS APP')
+        string(name: 'PARAM_PROD_API_ENDPOINT', defaultValue: 'https://ip10-0-71-6-ctcldhel795g008li5ig-1993.direct.docker.labs.eazytraining.fr/', description: 'PROD EAZYLABS API')
+        string(name: 'PARAM_PROD_APP_ENDPOINT', defaultValue: 'https://ip10-0-71-6-ctcldhel795g008li5ig-80.direct.docker.labs.eazytraining.fr/', description: 'PROD EAZYLABS APP')
     }
     agent none
     stages {
