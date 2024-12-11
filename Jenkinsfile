@@ -26,10 +26,10 @@ pipeline {
         string(name: 'PARAM_PORT_EXPOSED', defaultValue: '8050', description: 'APP EXPOSED PORT')
         string(name: 'PARAM_INTERNAL_PORT', defaultValue: '5000', description: 'APP INTERNAL PORT')
         string(name: 'PARAM_DOCKERHUB_ID', defaultValue: 'olivierkkoc', description: 'dockerhub id')
-        string(name: 'PARAM_STG_API_ENDPOINT', defaultValue: 'ip10-0-71-5-ctcldhel795g008li5ig-1993.direct.docker.labs.eazytraining.fr', description: 'STG EAZYLABS API')
-        string(name: 'PARAM_STG_APP_ENDPOINT', defaultValue: 'ip10-0-71-5-ctcldhel795g008li5ig-80.direct.docker.labs.eazytraining.fr', description: 'STG EAZYLABS APP')
-        string(name: 'PARAM_PROD_API_ENDPOINT', defaultValue: 'ip10-0-71-6-ctcldhel795g008li5ig-1993.direct.docker.labs.eazytraining.fr', description: 'PROD EAZYLABS API')
-        string(name: 'PARAM_PROD_APP_ENDPOINT', defaultValue: 'ip10-0-71-6-ctcldhel795g008li5ig-80.direct.docker.labs.eazytraining.fr', description: 'PROD EAZYLABS APP')
+        string(name: 'PARAM_STG_API_ENDPOINT', defaultValue: '52.91.99.25:1993', description: 'STG EAZYLABS API')
+        string(name: 'PARAM_STG_APP_ENDPOINT', defaultValue: '52.91.99.25', description: 'STG EAZYLABS APP')
+        string(name: 'PARAM_PROD_API_ENDPOINT', defaultValue: '34.224.18.9:1993', description: 'PROD EAZYLABS API')
+        string(name: 'PARAM_PROD_APP_ENDPOINT', defaultValue: '34.224.18.9', description: 'PROD EAZYLABS APP')
     }
     agent none
     stages {
